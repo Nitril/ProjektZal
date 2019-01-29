@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using AppLib;
+
 namespace AppUI
 {
     /// <summary>
@@ -20,9 +23,23 @@ namespace AppUI
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        
         public MainWindow()
         {
             InitializeComponent();
+
+            
+        }
+        void fillingDataGridUsingDataTable()
+        {
+            DataTable dt = new DataTable();
+
+        }
+        private void TaskListTitle_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Tasks.ItemsSource = SqliteDataAccess.LoadTasks().DefaultView;
         }
     }
 }
