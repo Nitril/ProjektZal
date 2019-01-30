@@ -35,7 +35,7 @@ namespace AppUI
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Tasks.ItemsSource = SqliteDataAccess.LoadMainTasks().DefaultView;
+            //Tasks.ItemsSource = SqliteDataAccess.LoadMainTasks().DefaultView;
             List<string> lst = new List<string>();
             lst = SqliteDataAccess.RerurnTaskHeadersList();
             foreach (string s in lst)
@@ -62,28 +62,20 @@ namespace AppUI
         }
         private void TaskListDropdown_Click(object sender, RoutedEventArgs e)
         {
-            //int selectedIndex = ComboBox1.SelectedIndex;
-           // Object selectedItem = ComboBox1.SelectedItem;
-
             Tasks.ItemsSource = SqliteDataAccess.LoadMainTasks().DefaultView;
-        }
-        
-        
-
-        private void ComboBox_DropdownClosed_Click(object sender, EventArgs e)
-        {
+        }       
+        private void ComboBox_SelectionChanged_Click(object sender, SelectionChangedEventArgs e)
+        {            
+        } 
+        private void ComboBox1_DropDownClosed(object sender, EventArgs e)
+        {           
             int selectedIndex = ComboBox1.SelectedIndex;
             Object selectedItem = ComboBox1.SelectedItem;
-
-            Tasks.ItemsSource = SqliteDataAccess.LoadMainTasks().DefaultView;
-        }
-
-        private void ComboBox_DropdownClosed_Click(object sender, SelectionChangedEventArgs e)
-        {
-            int selectedIndex = ComboBox1.SelectedIndex;
-            Object selectedItem = ComboBox1.SelectedItem;
-
-            Tasks.ItemsSource = SqliteDataAccess.LoadMainTasks().DefaultView;
+            string row = selectedItem.ToString();
+            DataTable datatable = new DataTable();
+            datatable = SqliteDataAccess.DisplaySelectedRow(row);           
+            Tasks.ItemsSource = null;          
+            Tasks.ItemsSource = datatable.DefaultView;
         }
     }
 }

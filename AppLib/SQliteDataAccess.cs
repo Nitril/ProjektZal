@@ -10,6 +10,7 @@ using AppLib;
 
 
 
+
 namespace AppLib
 {
     public class SqliteDataAccess
@@ -33,6 +34,11 @@ namespace AppLib
                 return dt;
             }
         }
+
+
+
+
+
 
         public static DataTable LoadMainTasks()  // List<TasksModel>
         {
@@ -64,18 +70,32 @@ namespace AppLib
                 }
                 return TitlesList;
             }
-            /*
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                var output = cnn.Query             // <PersonModel>("select * from Person", new DynamicParameters());
-                return output.ToList();
-            }
-            List<int> ids = new List<int>(dt.Rows.Count);
-            foreach (DataRow row in dt.Rows)
-                ids.Add((int)row["id"]);
-                */
         }
+        public static DataTable DisplaySelectedRow(string txt)
+        {
+            DataTable dt = new DataTable();
+            //using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
+                string TaskName = txt;
+                string strbuild = "Select TaskDescription from Tasks where TaskName = '" + TaskName + "' ";
 
+
+
+                //set the passed query
+                SQLiteDataAdapter ad = new SQLiteDataAdapter();
+                ad.SelectCommand = new SQLiteCommand(strbuild, cnn);
+                /*
+                string[] words = text.Split(' ');
+                _FirstName = words[0];
+                _LastName = words[1];
+                */
+                ad.Fill(dt);
+                return dt;
+            }
+
+        }
         /// <summary> Method to save data into database. In progress<summary>
        /*public static void SaveTask(TasksModel person)
         {
