@@ -29,7 +29,8 @@
 
         <StackPanel Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
             <Button x:Name="TaskListTitle" Margin="10"  Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Click="TaskListTitle_Click" >Load Tasks</Button>
-            <Button x:Name="TaskListTitle1" Margin="10"  Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Click="TaskListTitle_Click" >Load Tasks</Button>
+            <Button x:Name="TaskListTitle1" Margin="10"  Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Click="TaskListDropdown_Click" >Select Task</Button>
+            <ComboBox x:Name="ComboBox1" Margin="10"  DropDownClosed ="ComboBox_DropdownClosed_Click" Padding="15,0,0,0" Foreground="Black" IsEditable="True" SelectionChanged="ComboBox_DropdownClosed_Click" />
         </StackPanel>
         
         <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7">

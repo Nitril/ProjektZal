@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppLib
 {
-    class TasksModel
+    public class TasksModel
     {
         public int TaskId { get; set; }
         public string TaskName { get; set; }

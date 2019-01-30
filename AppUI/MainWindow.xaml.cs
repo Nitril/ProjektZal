@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 using AppLib;
 
 namespace AppUI
@@ -28,9 +29,22 @@ namespace AppUI
         public MainWindow()
         {
             InitializeComponent();
-
+            this.Loaded += MainWindow_Loaded;
             
         }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Tasks.ItemsSource = SqliteDataAccess.LoadMainTasks().DefaultView;
+            List<string> lst = new List<string>();
+            lst = SqliteDataAccess.RerurnTaskHeadersList();
+            foreach (string s in lst)
+            {
+                ComboBox1.Items.Add(s);
+            }
+
+        }
+
         void fillingDataGridUsingDataTable()
         {
             DataTable dt = new DataTable();
@@ -40,6 +54,36 @@ namespace AppUI
         {
             
             Tasks.ItemsSource = SqliteDataAccess.LoadTasks().DefaultView;
+        }
+        private void TaskListHeader_Click(object sender, RoutedEventArgs e)
+        {
+
+            Tasks.ItemsSource = SqliteDataAccess.LoadMainTasks().DefaultView;
+        }
+        private void TaskListDropdown_Click(object sender, RoutedEventArgs e)
+        {
+            //int selectedIndex = ComboBox1.SelectedIndex;
+           // Object selectedItem = ComboBox1.SelectedItem;
+
+            Tasks.ItemsSource = SqliteDataAccess.LoadMainTasks().DefaultView;
+        }
+        
+        
+
+        private void ComboBox_DropdownClosed_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = ComboBox1.SelectedIndex;
+            Object selectedItem = ComboBox1.SelectedItem;
+
+            Tasks.ItemsSource = SqliteDataAccess.LoadMainTasks().DefaultView;
+        }
+
+        private void ComboBox_DropdownClosed_Click(object sender, SelectionChangedEventArgs e)
+        {
+            int selectedIndex = ComboBox1.SelectedIndex;
+            Object selectedItem = ComboBox1.SelectedItem;
+
+            Tasks.ItemsSource = SqliteDataAccess.LoadMainTasks().DefaultView;
         }
     }
 }
