@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppUI"
         mc:Ignorable="d" FontSize="20"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
@@ -28,24 +28,16 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
-            <Button x:Name="TaskListTitle" Margin="10"  Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Click="TaskListTitle_Click" >Load Tasks</Button>
-            <Button x:Name="TaskListTitle1" Margin="10"  Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Click="TaskListDropdown_Click" >Select Task</Button>
             <ComboBox x:Name="ComboBox1" Margin="10"   Padding="15,0,0,0" Foreground="Black" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged_Click" DropDownClosed="ComboBox1_DropDownClosed" />
         </StackPanel>
-        
-        <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7">
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_File">
-                    <MenuItem Header="_Open"/>
-                    <MenuItem Header="_Close"/>
-                    <MenuItem Header="_Save"/>
-                </MenuItem>
-            </Menu>
-            
-        </DockPanel>
-        <DataGrid x:Name="Tasks" Grid.Row="3" Grid.Column="3">
 
+        <DataGrid x:Name="Tasks" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="3">
         </DataGrid>
-        
+
+        <StackPanel Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <Button x:Name="NextTask" Margin="10" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2">Next</Button>
+            <Button x:Name="PreviousTask" Margin="10" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2">Prev</Button>
+        </StackPanel>
+
     </Grid>
 </Window>
