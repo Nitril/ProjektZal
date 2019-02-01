@@ -46,7 +46,7 @@ namespace AppLib
             using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 //set the passed query
-                SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT TaskName FROM Tasks", LoadConnectionString());
+                SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT TaskSetName FROM TasksSet", LoadConnectionString());
                 ad.Fill(dt);
 
                 //ar output = cnn.Query<TasksModel>("select * from tasks", new DynamicParameters());
@@ -59,13 +59,13 @@ namespace AppLib
             using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 //set the passed query
-                SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT TaskName FROM Tasks", LoadConnectionString());
+                SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT TaskSetName FROM TasksSet", LoadConnectionString());
                 ad.Fill(dt);
                 //
                 List<string> TitlesList = new List<string>(dt.Rows.Count);
                 foreach (DataRow row in dt.Rows)
                 {
-                    TitlesList.Add((string)row["TaskName"]);
+                    TitlesList.Add((string)row["TaskSetName"]);
                     
                 }
                 return TitlesList;
@@ -79,23 +79,39 @@ namespace AppLib
             {
                 cnn.Open();
                 string TaskName = txt;
-                string strbuild = "Select TaskDescription from Tasks where TaskName = '" + TaskName + "' ";
-
-
+                string strbuild = "Select TaskName from Tasks AS t INNER JOIN TasksSet AS ts ON t.TaskSetId = ts.TaskSetId where TaskSetName = '" + TaskName + "' ";
 
                 //set the passed query
                 SQLiteDataAdapter ad = new SQLiteDataAdapter();
                 ad.SelectCommand = new SQLiteCommand(strbuild, cnn);
-                /*
-                string[] words = text.Split(' ');
-                _FirstName = words[0];
-                _LastName = words[1];
-                */
+               
                 ad.Fill(dt);
                 return dt;
             }
 
         }
+
+        public static DataTable PopulateListView(string txt)
+        {
+            DataTable dt = new DataTable();
+            
+            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
+                string TaskName = txt;
+                string strbuild = "Select TaskName from Tasks AS t INNER JOIN TasksSet AS ts ON t.TaskSetId = ts.TaskSetId where TaskSetName = '" + TaskName + "' ";
+
+                //set the passed query
+                SQLiteDataAdapter ad = new SQLiteDataAdapter();
+                ad.SelectCommand = new SQLiteCommand(strbuild, cnn);
+                
+                ad.Fill(dt);
+                return dt;
+            }
+
+        }
+
+        
         /// <summary> Method to save data into database. In progress<summary>
        /*public static void SaveTask(TasksModel person)
         {
