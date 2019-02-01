@@ -79,7 +79,7 @@ namespace AppLib
             {
                 cnn.Open();
                 string TaskName = txt;
-                string strbuild = "Select TaskName from Tasks AS t INNER JOIN TasksSet AS ts ON t.TaskSetId = ts.TaskSetId where TaskSetName = '" + TaskName + "' ";
+                string strbuild = "Select TaskName from Tasks AS t INNER JOIN TasksSet AS ts ON t.TaskSetId = ts.TaskSetId where TaskSetName = '" + TaskName + "' ORDER BY Ordr";
 
                 //set the passed query
                 SQLiteDataAdapter ad = new SQLiteDataAdapter();
@@ -99,7 +99,7 @@ namespace AppLib
             {
                 cnn.Open();
                 string TaskName = txt;
-                string strbuild = "Select TaskName from Tasks AS t INNER JOIN TasksSet AS ts ON t.TaskSetId = ts.TaskSetId where TaskSetName = '" + TaskName + "' ";
+                string strbuild = "Select TaskName from Tasks AS t INNER JOIN TasksSet AS ts ON t.TaskSetId = ts.TaskSetId where TaskSetName = '" + TaskName + "' ORDER BY Ordr";
 
                 //set the passed query
                 SQLiteDataAdapter ad = new SQLiteDataAdapter();
