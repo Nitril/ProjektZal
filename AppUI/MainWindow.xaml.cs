@@ -46,7 +46,7 @@ namespace AppUI
             }
             foreach (string s in lst1)
             {
-                ComboBox2.Items.Add(s);
+                //ComboBox2.Items.Add(s);
             }
         }
 
@@ -96,9 +96,9 @@ namespace AppUI
         private void ComboBox2_DropDownClosed(object sender, EventArgs e)
         {
             //get selected object from combobox-dropdownmen
-            Object selectedItem = ComboBox2.SelectedItem;
+            //Object selectedItem = ComboBox2.SelectedItem;
             //get selected row to string
-            if (selectedItem.ToString() == null)
+            /**if (selectedItem.ToString() == null)
             {
 
             }
@@ -121,7 +121,7 @@ namespace AppUI
                 Tasks.ItemsSource = null;
                 //import querry results to dgv
                 Tasks.ItemsSource = datatable.DefaultView;
-            }
+        }*/
         }
     }
 }
