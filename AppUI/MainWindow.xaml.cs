@@ -37,12 +37,17 @@ namespace AppUI
         {
             //Tasks.ItemsSource = SqliteDataAccess.LoadMainTasks().DefaultView;
             List<string> lst = new List<string>();
+            List<string> lst1 = new List<string>();
+            lst1 = SqliteDataAccess.RerurnTaskHeadersListGeneral("TaskSetName", "TasksSet");
             lst = SqliteDataAccess.RerurnTaskHeadersList();
             foreach (string s in lst)
             {
                 ComboBox1.Items.Add(s);
             }
-
+            foreach (string s in lst1)
+            {
+                ComboBox2.Items.Add(s);
+            }
         }
 
         void fillingDataGridUsingDataTable()
@@ -86,6 +91,37 @@ namespace AppUI
             datatable = SqliteDataAccess.DisplaySelectedRow(row);
             
             
+        }
+
+        private void ComboBox2_DropDownClosed(object sender, EventArgs e)
+        {
+            //get selected object from combobox-dropdownmen
+            Object selectedItem = ComboBox2.SelectedItem;
+            //get selected row to string
+            if (selectedItem.ToString() == null)
+            {
+
+            }
+            else
+            {
+                string TaskSetName = selectedItem.ToString();
+                //build new datatable
+                DataTable datatable = new DataTable();
+                //load datadable with data from method
+                datatable = SqliteDataAccess.DisplaySelectedRow(TaskSetName);
+                //build class object
+                TaskSet set1 = new TaskSet();
+                //Import to it data from class method
+                set1 = SqliteDataAccess.SelectedRowToTaskSetModel("*", "TasksSet", "TaskSetName", TaskSetName);
+                //Null the list to avoid stacking.
+                TaskLst.ItemsSource = null;
+                //Display Id prop from the Object
+                TaskLst.Items.Add(set1.TaskSetName);
+                //Null datagridview
+                Tasks.ItemsSource = null;
+                //import querry results to dgv
+                Tasks.ItemsSource = datatable.DefaultView;
+            }
         }
     }
 }

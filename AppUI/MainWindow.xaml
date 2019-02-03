@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
-            <ComboBox x:Name="ComboBox1" Margin="10"   Foreground="Black" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged_Click" DropDownClosed="ComboBox1_DropDownClosed" />
+            <ComboBox x:Name="ComboBox1" Margin="10"   Padding="15,0,0,0" Foreground="Black" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged_Click" DropDownClosed="ComboBox1_DropDownClosed" />
         </StackPanel>
 
         <!-- <DataGrid x:Name="Tasks" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="3">
@@ -45,6 +45,7 @@
         <StackPanel Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
             <Button x:Name="NextTask" Margin="10" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2">Next</Button>
             <Button x:Name="PreviousTask" Margin="10" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2">Prev</Button>
+            <ListBox x:Name="TaskLst" Width="100"/>
         </StackPanel>
 
     </Grid>
