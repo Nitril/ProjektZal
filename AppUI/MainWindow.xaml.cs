@@ -75,6 +75,7 @@ namespace AppUI
             
             
             Lista.DataContext = datatable.DefaultView;
+            
         } 
         private void ComboBox1_DropDownClosed(object sender, EventArgs e)
         {           
@@ -82,9 +83,9 @@ namespace AppUI
             Object selectedItem = ComboBox1.SelectedItem;
             string row = selectedItem.ToString();
             DataTable datatable = new DataTable();
-            datatable = SqliteDataAccess.DisplaySelectedRow(row);           
-            //Tasks.ItemsSource = null;          
-            //Tasks.ItemsSource = datatable.DefaultView;
+            datatable = SqliteDataAccess.DisplaySelectedRow(row);
+            
+            
         }
     }
 }
