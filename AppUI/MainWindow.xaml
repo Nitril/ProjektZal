@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppUI"
         mc:Ignorable="d" FontSize="20"
-        Title="MainWindow" Height="450" Width="600">
+        Title="Książka kucharska by WSEI students" Height="450" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
@@ -28,12 +28,14 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
-            <ComboBox x:Name="ComboBox1" Margin="10"   Padding="15,0,0,0" Foreground="Black" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged_Click" DropDownClosed="ComboBox1_DropDownClosed" />
+            <ComboBox x:Name="ComboBox1" Margin="10"   Padding="15,0,0,0" Width="200" Foreground="Black" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged_Click" DropDownClosed="ComboBox1_DropDownClosed" Text="Wybierz danie"/>
         </StackPanel>
 
         <!-- <DataGrid x:Name="Tasks" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="3">
         </DataGrid>-->
+   
         <StackPanel Grid.Row="2" Grid.Column="3" Margin="10" >
+            <TextBlock Grid.Row="2" Grid.Column="3" Margin="10" Text="Lista zadań:"/>
             <ListView x:Name="Lista" Grid.Row="2" Grid.Column="3" ItemsSource="{Binding Path=Table}" MinWidth="200" MinHeight="240">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -42,10 +44,22 @@
                 </ListBox.ItemTemplate>
             </ListView>
         </StackPanel>
-        <StackPanel Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
+        
+        <!--<StackPanel Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
             <Button x:Name="NextTask" Margin="10" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2">Next</Button>
             <Button x:Name="PreviousTask" Margin="10" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2">Prev</Button>
             <ListBox x:Name="TaskLst" Width="100"/>
+        </StackPanel>-->
+
+        <StackPanel Grid.Row="1" Grid.RowSpan="3" Grid.Column="4" Margin="10">
+            <TextBlock Grid.Row="1" Grid.Column="4" Margin="10,0,10,20" Text="Szczegółowa lista zadań:"/>
+            <ListView x:Name="DetailsList" Grid.Row="2" Grid.Column="4" Height="280" Margin="10">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding TaskDescription}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListView>
         </StackPanel>
 
     </Grid>
