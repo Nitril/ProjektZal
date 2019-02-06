@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AppLib
 {
+    //never used
     class TasksSetModel
     {
         public int TaskSetId { get; set; }
