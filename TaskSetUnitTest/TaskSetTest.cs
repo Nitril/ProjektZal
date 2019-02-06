@@ -8,7 +8,7 @@ namespace TaskSetUnitTest
     public class TaskSetTest
     {
         [TestMethod]
-        public void PropertiesTest()
+        public void TaskSetPropertiesTest()
         {
             //arrange
             long task_set_id = 1;
@@ -16,6 +16,7 @@ namespace TaskSetUnitTest
 
             //act
             TaskSet taskSet = new TaskSet();
+
             taskSet.TaskSetId = task_set_id;
             taskSet.TaskSetName = task_set_name;
 
