@@ -68,32 +68,31 @@ namespace AppUI
         private void TaskListDropdown_Click(object sender, RoutedEventArgs e)
         {
             //Tasks.ItemsSource = SqliteDataAccess.LoadMainTasks().DefaultView;
-        }       
+        }   
+        
         private void ComboBox_SelectionChanged_Click(object sender, SelectionChangedEventArgs e)
         {
             //MessageBox.Show(ComboBox1.SelectedItem.ToString());
-            int selectedIndex = ComboBox1.SelectedIndex;
+            //int selectedIndex = ComboBox1.SelectedIndex;
+
             Object selectedItem = ComboBox1.SelectedItem;
             string row = selectedItem.ToString();
             DataTable datatable = new DataTable();
-            datatable = SqliteDataAccess.PopulateListView(row);
-            
-            
+            datatable = SqliteDataAccess.DisplaySelectedRow(row);
+
             Lista.DataContext = datatable.DefaultView;
-            
         } 
-        private void ComboBox1_DropDownClosed(object sender, EventArgs e)
+
+        /*private void ComboBox1_DropDownClosed(object sender, EventArgs e)
         {           
             int selectedIndex = ComboBox1.SelectedIndex;
             Object selectedItem = ComboBox1.SelectedItem;
             string row = selectedItem.ToString();
             DataTable datatable = new DataTable();
             datatable = SqliteDataAccess.DisplaySelectedRow(row);
-            
-            
-        }
+        }*/
 
-        private void ComboBox2_DropDownClosed(object sender, EventArgs e)
+        /*private void ComboBox2_DropDownClosed(object sender, EventArgs e)
         {
             //get selected object from combobox-dropdownmen
             //Object selectedItem = ComboBox2.SelectedItem;
@@ -121,7 +120,23 @@ namespace AppUI
                 Tasks.ItemsSource = null;
                 //import querry results to dgv
                 Tasks.ItemsSource = datatable.DefaultView;
-        }*/
         }
+        }*/
+
+        private void Lista_SelectionChanged_Click(object sender, SelectionChangedEventArgs e)
+        {
+            DataTable datatable = new DataTable();
+
+            foreach (DataRowView drv in Lista.SelectedItems)
+            {
+                DataRow row = drv.Row;
+                string item = row.ItemArray[0].ToString();
+                
+                datatable = SqliteDataAccess.DisplayTaskDescriptions(item);
+            }
+
+            DetailsList.DataContext = datatable.DefaultView;
+        }
+
     }
 }
