@@ -20,14 +20,14 @@ namespace AppLib
         public static DataTable LoadTasks()  // List<TasksModel>
         {
             DataTable dt = new DataTable();
-            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            using (SQLiteConnection cnn = new SQLiteConnection("Data Source=.\\Tasks.db;Version=3;"))
             {
                               
 
 
 
                 //set the passed query
-                SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT * FROM Tasks",LoadConnectionString());
+                SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT * FROM Tasks", "Data Source=.\\Tasks.db;Version=3;");
                 ad.Fill(dt);
 
                 //ar output = cnn.Query<TasksModel>("select * from tasks", new DynamicParameters());
@@ -43,10 +43,10 @@ namespace AppLib
         public static DataTable LoadMainTasks()  // List<TasksModel>
         {
             DataTable dt = new DataTable();
-            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            using (SQLiteConnection cnn = new SQLiteConnection("Data Source=.\\Tasks.db;Version=3;"))
             {
                 //set the passed query
-                SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT TaskSetName FROM TasksSet", LoadConnectionString());
+                SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT TaskSetName FROM TasksSet", "Data Source=.\\Tasks.db;Version=3;");
                 ad.Fill(dt);
 
                 //ar output = cnn.Query<TasksModel>("select * from tasks", new DynamicParameters());
@@ -56,10 +56,10 @@ namespace AppLib
         public static List<string> RerurnTaskHeadersList()
         {
             DataTable dt = new DataTable();
-            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            using (SQLiteConnection cnn = new SQLiteConnection("Data Source=.\\Tasks.db;Version=3;"))
             {
                 //set the passed query
-                SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT TaskSetName FROM TasksSet", LoadConnectionString());
+                SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT TaskSetName FROM TasksSet", "Data Source=.\\Tasks.db;Version=3;");
                 ad.Fill(dt);
                 //
                 List<string> TitlesList = new List<string>(dt.Rows.Count);
@@ -80,11 +80,11 @@ namespace AppLib
             string _Quantifier = Quantifier;
 
             DataTable dt = new DataTable();
-            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            using (SQLiteConnection cnn = new SQLiteConnection("Data Source=.\\Tasks.db;Version=3;"))
             {
                 //set the passed query
                 string strbuild = "Select " + _Quantifier + " from " + _TableSetName;
-                SQLiteDataAdapter ad = new SQLiteDataAdapter(strbuild, LoadConnectionString());
+                SQLiteDataAdapter ad = new SQLiteDataAdapter(strbuild, "Data Source=.\\Tasks.db;Version=3;");
                 ad.Fill(dt);
                 //
                 List<string> SetsList = new List<string>(dt.Rows.Count);
@@ -100,7 +100,7 @@ namespace AppLib
         {
             DataTable dt = new DataTable();
             //using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            using (SQLiteConnection cnn = new SQLiteConnection("Data Source=.\\Tasks.db;Version=3;"))
             {
                 cnn.Open();
                 string TaskName = txt;
@@ -120,7 +120,7 @@ namespace AppLib
         {
             DataTable dt = new DataTable();
             
-            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            using (SQLiteConnection cnn = new SQLiteConnection("Data Source=.\\Tasks.db;Version=3;"))
             {
                 cnn.Open();
                 string TaskName = txt;
@@ -144,7 +144,7 @@ namespace AppLib
         {
             //Create DataTable
             DataTable dt1 = new DataTable();
-            using (SQLiteConnection cnn1 = new SQLiteConnection(LoadConnectionString()))
+            using (SQLiteConnection cnn1 = new SQLiteConnection("Data Source=.\\Tasks.db;Version=3;"))
             {
 
                 //Open connection

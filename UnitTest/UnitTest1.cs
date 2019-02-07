@@ -16,42 +16,105 @@ namespace UnitTest
     public class UnitTest1
     {
         [TestMethod]
+        [DeploymentItem("Tasks.db")]
         public void TestConnectionToDatabase()
         {
-            /*var connection = new SqliteConnection(SQLiteDataAccess.LoadConnectionString());
-            connection.Open();
 
-            try
-            {
-                var options = new DbContextOptionsBuilder<BloggingContext>()
-                    .UseSqlite(connection)
-                    .Options;
 
-                // Create the schema in the database
-                using (var context = new BloggingContext(options))
-                {
-                    context.Database.EnsureCreated();
-                }
+            DataTable dt = SqliteDataAccess.LoadTasks();
 
-                // Run the test against one instance of the context
-                using (var context = new BloggingContext(options))
-                {
-                    var service = new BlogService(context);
-                    service.Add("http://sample.com");
-                }
 
-                // Use a separate instance of the context to verify correct data was saved to database
-                using (var context = new BloggingContext(options))
-                {
-                    Assert.AreEqual(1, context.Blogs.Count());
-                    Assert.AreEqual("http://sample.com", context.Blogs.Single().Url);
-                }
-            }
-            finally
-            {
-                connection.Close();
-            }
-            */
+            string field = dt.Rows[0][0].ToString();
+            Assert.AreEqual(field, "1");
+
         }
+
+        [TestMethod]
+        [DeploymentItem("Tasks.db")]
+        public void TestConnectionToDatabase2()
+        {
+
+
+            DataTable dt = SqliteDataAccess.LoadMainTasks();
+
+
+            string field = dt.Rows[0][0].ToString();
+            Assert.AreEqual(field, "Smoothie");
+
+        }
+
+        [TestMethod]
+        [DeploymentItem("Tasks.db")]
+        public void TestConnectionToDatabase4()
+        {
+
+
+            List<string> dt = SqliteDataAccess.RerurnTaskHeadersList();
+
+
+            string field = dt[0].ToString();
+            Assert.AreEqual(field, "Smoothie");
+
+        }
+
+
+        [TestMethod]
+        [DeploymentItem("Tasks.db")]
+        public void TestConnectionToDatabase5()
+        {
+
+
+            List<string> dt = SqliteDataAccess.RerurnTaskHeadersListGeneral("TaskSetName", "TasksSet");
+
+
+            string field = dt[0].ToString();
+            Assert.AreEqual(field, "Smoothie");
+
+        }
+
+        [TestMethod]
+        [DeploymentItem("Tasks.db")]
+        public void TestConnectionToDatabase6()
+        {
+
+
+            DataTable dt = SqliteDataAccess.DisplaySelectedRow("Smoothie");
+
+
+            string field = dt.Rows[0][0].ToString();
+            Assert.AreEqual(field, "TestTask1");
+
+        }
+
+
+        [TestMethod]
+        [DeploymentItem("Tasks.db")]
+        public void TestConnectionToDatabase7()
+        {
+
+
+            DataTable dt = SqliteDataAccess.PopulateListView("Smoothie");
+
+
+            string field = dt.Rows[0][0].ToString();
+            Assert.AreEqual(field, "TestTask1");
+
+        }
+
+        /*
+        [TestMethod]
+        [DeploymentItem("Tasks.db")]
+        public void TestConnectionToDatabase8()
+        {
+
+
+            TaskSet taskset = SqliteDataAccess.SelectedRowToTaskSetModel("TaskSetId", "TasksSet", "TaskSetName", "Smoothie");
+
+
+            long value = taskset.TaskSetId;
+            Assert.AreEqual(value, 2);
+
+        }
+        */
     }
 }
