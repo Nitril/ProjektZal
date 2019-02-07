@@ -28,16 +28,12 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
-            <!--DropDownClosed="ComboBox1_DropDownClosed"-->
-            <ComboBox x:Name="ComboBox1" Margin="10"   Padding="15,0,0,0" Width="200" Foreground="Black" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged_Click" Text="Wybierz danie"/>
+            <ComboBox x:Name="MealsSelect" Margin="10"   Padding="15,0,0,0" Width="200" Foreground="Black" IsEditable="True" SelectionChanged="MealsSelect_SelectionChanged_Click" Text="Wybierz danie"/>
         </StackPanel>
 
-        <!-- <DataGrid x:Name="Tasks" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="3">
-        </DataGrid>-->
-   
         <StackPanel Grid.Row="2" Grid.Column="3" Margin="10" >
             <TextBlock Grid.Row="2" Grid.Column="3" Margin="10" Text="Lista zadań:" FontWeight="Bold"/>
-            <ListBox x:Name="Lista" IsSelected="true" Grid.Row="2" Grid.Column="3" ItemsSource="{Binding Path=Table}" MinWidth="200" MinHeight="240" SelectionChanged="Lista_SelectionChanged_Click">
+            <ListBox x:Name="MealTaskList" IsSelected="true" Grid.Row="2" Grid.Column="3" ItemsSource="{Binding Path=Table}" MinWidth="200" MinHeight="240" SelectionChanged="MealTaskList_SelectionChanged_Click">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding TaskName}" />
@@ -45,37 +41,18 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
-        
-        <!--<StackPanel Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
-            <Button x:Name="NextTask" Margin="10" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2">Next</Button>
-            <Button x:Name="PreviousTask" Margin="10" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2">Prev</Button>
-            <ListBox x:Name="TaskLst" Width="100"/>
-        </StackPanel>-->
 
         <StackPanel Grid.Row="2" Grid.RowSpan="3" Grid.Column="4" Margin="10">
             <TextBlock Grid.Row="2" Grid.Column="4" Margin="10" Text="Szczegółowy opis:" FontWeight="Bold"/>
 
-            <!--<ListBox x:Name="DetailsList" ItemsSource="{Binding Path=Table}" Grid.Row="3" Grid.Column="4" MinWidth="200" MinHeight="240">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding TaskDescription}" />
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>-->
-
-            <!--<TextBlock x:Name="DetailsList" Text="{Binding TaskDescription}" Grid.Row="3" Grid.Column="4" MinWidth="200" MinHeight="240" FontSize="14" FontStyle="Italic" Background="#FFD7E5F1" Foreground="Black" Padding="5"/>-->
-
-
-            <ListView x:Name="DetailsList" ItemsSource="{Binding Path=Table}" Grid.Row="3" Grid.Column="4" Height="240" FontSize="14" FontStyle="Italic" Background="#FFD7E5F1" Foreground="Black" Padding="5">
+            <ListView x:Name="MealDetailTaskList" ItemsSource="{Binding Path=Table}" Grid.Row="3" Grid.Column="4" Height="240" FontSize="14" FontStyle="Italic" Background="#FFD7E5F1" Foreground="Black" Padding="5">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding TaskDescription}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-
         </StackPanel>
-
+        
     </Grid>
 </Window>
