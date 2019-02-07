@@ -22,10 +22,6 @@ namespace AppLib
             DataTable dt = new DataTable();
             using (SQLiteConnection cnn = new SQLiteConnection("Data Source=.\\Tasks.db;Version=3;"))
             {
-                              
-
-
-
                 //set the passed query
                 SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT * FROM Tasks", "Data Source=.\\Tasks.db;Version=3;");
                 ad.Fill(dt);
@@ -34,9 +30,6 @@ namespace AppLib
                 return dt;
             }
         }
-
-
-
 
 
 
@@ -53,6 +46,9 @@ namespace AppLib
                 return dt;
             }
         }
+
+
+
         public static List<string> RerurnTaskHeadersList()
         {
             DataTable dt = new DataTable();
@@ -116,7 +112,7 @@ namespace AppLib
 
         }
 
-        public static DataTable PopulateListView(string txt)
+        /*public static DataTable PopulateListView(string txt)
         {
             DataTable dt = new DataTable();
             
@@ -133,12 +129,31 @@ namespace AppLib
                 string[] words = text.Split(' ');
                 _FirstName = words[0];
                 _LastName = words[1];
-                */
+                
                 ad.Fill(dt);
                 return dt;
             }
 
+        }*/
+
+        public static DataTable DisplayTaskDescriptions(string TaskName)
+        {
+            DataTable dt = new DataTable();
+
+            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
+                string strbuild = "Select TaskDescription from Tasks where TaskName = '" + TaskName + "' ORDER BY Ordr";
+
+                SQLiteDataAdapter ad = new SQLiteDataAdapter();
+                ad.SelectCommand = new SQLiteCommand(strbuild, cnn);
+
+                ad.Fill(dt);
+                return dt;
+            }
         }
+
+
         /// <summary> Method to retrive data from SQLite row, extract it to custom Object <summary>
         public static TaskSet SelectedRowToTaskSetModel(string Quantifier, string TableName, string SearchedValue, string TaskSetName)
         {
