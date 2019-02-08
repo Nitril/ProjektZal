@@ -22,33 +22,7 @@ namespace TasksModelUnitTest
     [TestClass]
     public class SQLiteConnectionTest
     {
-        //[TestMethod]
-        //[DeploymentItem("Tasks.db")]
-        //public void TestConnectionToDatabase()
-        //{
-
-        //    DataTable dt = SqliteDataAccess.LoadTasks();
-
-
-        //    string field = dt.Rows[0][0].ToString();
-        //    Assert.AreEqual(field, "1");
-
-        //}
-
-        //[TestMethod]
-        //[DeploymentItem("Tasks.db")]
-        //public void TestConnectionToDatabase2()
-        //{
-
-
-        //    DataTable dt = SqliteDataAccess.LoadMainTasks();
-
-
-        //    string field = dt.Rows[0][0].ToString();
-        //    Assert.AreEqual(field, "Smoothie");
-
-        //}
-
+        
         [TestMethod]
         [DeploymentItem("Tasks.db")]
         public void TestConnectionToDatabase4()
@@ -64,20 +38,7 @@ namespace TasksModelUnitTest
         }
 
 
-        //[TestMethod]
-        //[DeploymentItem("Tasks.db")]
-        //public void TestConnectionToDatabase5()
-        //{
-
-
-        //    List<string> dt = SqliteDataAccess.RerurnTaskHeadersListGeneral("TaskSetName", "TasksSet");
-
-
-        //    string field = dt[0].ToString();
-        //    Assert.AreEqual(field, "Smoothie");
-
-        //}
-
+        
         [TestMethod]
         [DeploymentItem("Tasks.db")]
         public void TestConnectionToDatabase6()
@@ -93,36 +54,7 @@ namespace TasksModelUnitTest
         }
 
 
-        //[TestMethod]
-        //[DeploymentItem("Tasks.db")]
-        //public void TestConnectionToDatabase7()
-        //{
-
-
-        //    DataTable dt = SqliteDataAccess.PopulateListView("Smoothie");
-
-
-        //    string field = dt.Rows[0][0].ToString();
-        //    Assert.AreEqual(field, "TestTask1");
-
-        //}
-
-        /*
-        [TestMethod]
-        [DeploymentItem("Tasks.db")]
-        public void TestConnectionToDatabase8()
-        {
-
-
-            TaskSet taskset = SqliteDataAccess.SelectedRowToTaskSetModel("TaskSetId", "TasksSet", "TaskSetName", "Smoothie");
-
-
-            long value = taskset.TaskSetId;
-            Assert.AreEqual(value, 2);
-
-        }
-        */
-        
+               
 
         [TestMethod]
         [DeploymentItem("Tasks.db")]
