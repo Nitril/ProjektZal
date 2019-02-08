@@ -73,7 +73,7 @@ namespace AppLib
         }
 
         // <summary> Load connection string from configuration manager with id="Default" <summary>
-        private static string LoadConnectionString(string id = "Default")    //(string id = "Default")
+        private static string LoadConnectionString(string id = "Default")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }

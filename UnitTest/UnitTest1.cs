@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using AppLib;
 
 
-namespace UnitTest
+namespace TaskModelUnitTest
 {
     [TestClass]
     public class UnitTest1

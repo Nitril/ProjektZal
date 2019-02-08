@@ -2,7 +2,7 @@
 using AppLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TaskSetUnitTest
+namespace TasksModelUnitTest
 {
     [TestClass]
     public class TaskSetTest
