@@ -88,7 +88,7 @@ namespace TasksModelUnitTest
 
 
             string field = dt.Rows[0][0].ToString();
-            Assert.AreEqual(field, "TestTask1");
+            Assert.AreEqual(field, "Kup i umyj owoce");
 
         }
 
