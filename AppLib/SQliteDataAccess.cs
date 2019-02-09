@@ -79,7 +79,8 @@ namespace AppLib
             for (int i = 0; i < rowsCount; i++)
             {
                 DataRow row = dataTable.Rows[i];
-                data += row[0].ToString();               
+                data += row[0].ToString();
+                data += " ";
             }
             return data;
         }

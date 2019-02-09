@@ -67,6 +67,7 @@ namespace TasksModelUnitTest
             Assert.AreEqual(field, "SmothieTestDescription2", "returned values incompatibility");
 
         }
+
         [TestMethod]
         [DeploymentItem("Tasks.db")]
         public void TestConvertingDTtoString()
@@ -74,7 +75,7 @@ namespace TasksModelUnitTest
 
             DataTable dt = SqliteDataAccess.DisplaySelectedRow("Smoothie");
             string chk = SqliteDataAccess.convertDataTableToString(dt);
-            string chk1 = "aaa";
+            string chk1 = "Kup i umyj owoce Przygotuj wszystkie składniki Pokrój owoce Wrzuć do pojemnika Podanie ";
             Assert.AreEqual(chk, chk1);
         }
     }
