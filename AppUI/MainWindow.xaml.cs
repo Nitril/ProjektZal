@@ -71,11 +71,8 @@ namespace AppUI
             }
 
             string read = SqliteDataAccess.convertDataTableToString(datatable);
-
-            //SpeechSynthesizer synth = new SpeechSynthesizer();
-            
-            //synth.SpeakAsyncCancelAll();
-
+                       
+            synth.SpeakAsyncCancelAll();
 
             Prompt prompt = new Prompt(read);
 
