@@ -67,5 +67,15 @@ namespace TasksModelUnitTest
             Assert.AreEqual(field, "SmothieTestDescription2", "returned values incompatibility");
 
         }
+        [TestMethod]
+        [DeploymentItem("Tasks.db")]
+        public void TestConvertingDTtoString()
+        {
+
+            DataTable dt = SqliteDataAccess.DisplaySelectedRow("Smoothie");
+            string chk = SqliteDataAccess.convertDataTableToString(dt);
+            string chk1 = "aaa";
+            Assert.AreEqual(chk, chk1);
+        }
     }
 }

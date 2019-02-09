@@ -31,7 +31,7 @@ namespace AppUI
         {
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
-            SpeechSynthesizer synth = new SpeechSynthesizer();
+           
     }
         
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
