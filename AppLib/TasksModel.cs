@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace AppLib
 {
+
+    /// <summary>
+    /// TasksModel class is model class to having the class representation of Tasks table with recipe steps
+    /// </summary>
     public class TasksModel
     {
         public int TaskId { get; set; }

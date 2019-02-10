@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:AppUI"
         mc:Ignorable="d" FontSize="20"
         Title="Cookbook by WSEI students" Height="530" Width="850">
+    <!-- split window as grid with 7 columns and 8 rows -->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
@@ -26,15 +27,15 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-
+        <!-- set window bacground image -->
         <Grid.Background>
             <ImageBrush ImageSource="img/cook_book_bckgrd.png" Stretch="UniformToFill"/>
         </Grid.Background>
-
+        <!-- stack panel with drop down list  -->
         <StackPanel Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
             <ComboBox x:Name="MealsSelect" Margin="10"   Padding="15,0,0,0" Width="200" Foreground="Black" IsEditable="True" SelectionChanged="MealsSelect_SelectionChanged_Click" Text="Wybierz danie" FontFamily="Segoe Print" FontSize="18" BorderBrush="{x:Null}" Background="#FFF0F0F0"/>
         </StackPanel>
-
+        <!-- stack panel with task list as listview binding to filtered main task list  -->
         <StackPanel Grid.Row="2" Grid.Column="3" Margin="10" >
             <TextBlock Grid.Row="2" Grid.Column="3" Margin="10" Text="Lista zadań:" Foreground="White" FontFamily="Segoe Print" FontSize="22"/>
             <ListBox x:Name="MealTaskList" IsSelected="true" Grid.Row="2" Grid.Column="3" ItemsSource="{Binding Path=Table}" MinWidth="320" MinHeight="270" SelectionChanged="MealTaskList_SelectionChanged_Click" Background="Black" BorderBrush="{x:Null}" OpacityMask="#B2FFFFFF" Foreground="White" FontFamily="Segoe Print">
@@ -45,7 +46,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
-
+        <!-- stack panel with meal task description binding to filtered list basing on selected meal task  -->    
         <StackPanel Grid.Row="2" Grid.RowSpan="3" Grid.Column="4" Margin="10">
             <TextBlock Grid.Row="2" Grid.Column="4" Margin="10" Text="Szczegółowy opis:" FontFamily="Segoe Print" FontSize="22" Foreground="White"/>
 

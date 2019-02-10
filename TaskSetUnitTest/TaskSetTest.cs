@@ -7,6 +7,7 @@ namespace TasksModelUnitTest
     [TestClass]
     public class TaskSetTest
     {
+
         [TestMethod]
         public void TaskSetPropertiesTest()
         {

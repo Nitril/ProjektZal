@@ -63,7 +63,6 @@
     <Compile Include="SQliteDataAccess.cs" />
     <Compile Include="TaskSet.cs" />
     <Compile Include="TasksModel.cs" />
-    <Compile Include="TasksSetModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

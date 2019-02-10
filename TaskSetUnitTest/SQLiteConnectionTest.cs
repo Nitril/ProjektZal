@@ -13,60 +13,71 @@ using System.Threading;
 
 namespace TasksModelUnitTest
 
-/*
- * RerurnTaskHeadersList()
- * DisplaySelectedRow(string txt)
- * DisplayTaskDescriptions(string TaskName)
- */
+
 {
+    /// <summary> 
+    /// Class containing unit testing for methods responsible for  database connection and displaying main window.
+    /// </summary>
     [TestClass]
     public class SQLiteConnectionTest
     {
-        
+        /// <summary> 
+        /// Method used to test connection to Database and check if it can retrieve recipe name using method RerurnTaskHeadersList
+        /// </summary>
         [TestMethod]
         [DeploymentItem("Tasks.db")]
         public void TestConnectionToDatabase4()
         {
 
-
+            
             List<string> dt = SqliteDataAccess.RerurnTaskHeadersList();
 
-
+            
             string field = dt[0].ToString();
-            Assert.AreEqual(field, "Smoothie");
+
+            
+            Assert.AreEqual(field, "Kotlet schabowy");
 
         }
 
 
-        
+        /// <summary> 
+        /// Method used to test connection to Database and check if it can retrieve task from selected recipe name using method DisplaySelectedRow
+        /// </summary>
         [TestMethod]
         [DeploymentItem("Tasks.db")]
         public void TestConnectionToDatabase6()
         {
 
-            string z = "Smoothie";            DataTable dt = SqliteDataAccess.DisplaySelectedRow(z);
+            string z = "Kotlet schabowy";
+            DataTable dt = SqliteDataAccess.DisplaySelectedRow(z);
 
 
             string field = dt.Rows[0][0].ToString();
-            Assert.AreEqual(field, "Kup i umyj owoce");
+            Assert.AreEqual(field, "Mięso na schabowe");
 
         }
 
 
-               
 
+        /// <summary> 
+        /// Method used to test connection to Database and check if it can retrieve task descriptions basing on selected meal task name using method DisplayTaskDescriptions
+        /// </summary>
         [TestMethod]
         [DeploymentItem("Tasks.db")]
         public void TestConnectionToDatabase7()
         {
 
-            DataTable dt = SqliteDataAccess.DisplayTaskDescriptions("Przygotuj wszystkie składniki");
+            DataTable dt = SqliteDataAccess.DisplayTaskDescriptions("Mięso na schabowe");
 
-            string field = dt.Rows[0][0].ToString();
-            Assert.AreEqual(field, "SmothieTestDescription2", "returned values incompatibility");
+            string field = dt.Rows[0][0].ToString().Substring(0,9);
+            Assert.AreEqual(field, "Przygotuj");
 
         }
 
+        /// <summary> 
+        /// Test if main window is displayed
+        /// </summary>
         [TestMethod]
         public void Test_window()
         {
@@ -79,14 +90,14 @@ namespace TasksModelUnitTest
                 mw.Show();
 
                 showMonitor.Set();
-                closeMonitor.Wait();
+                closeMonitor.Wait(1);
             }));
 
             th.ApartmentState = ApartmentState.STA;
             th.Start();
 
             showMonitor.Wait(1);
-            Task.Delay(1000).Wait();
+            Task.Delay(1000).Wait(1);
             
             closeMonitor.Set();
         }
