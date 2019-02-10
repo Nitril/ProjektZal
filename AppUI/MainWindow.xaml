@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppUI"
         mc:Ignorable="d" FontSize="20"
-        Title="Książka kucharska by WSEI students" Height="450" Width="590">
+        Title="Cookbook by WSEI students" Height="530" Width="850">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
@@ -27,13 +27,17 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
+        <Grid.Background>
+            <ImageBrush ImageSource="img/cook_book_bckgrd.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+
         <StackPanel Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
-            <ComboBox x:Name="MealsSelect" Margin="10"   Padding="15,0,0,0" Width="200" Foreground="Black" IsEditable="True" SelectionChanged="MealsSelect_SelectionChanged_Click" Text="Wybierz danie"/>
+            <ComboBox x:Name="MealsSelect" Margin="10"   Padding="15,0,0,0" Width="200" Foreground="Black" IsEditable="True" SelectionChanged="MealsSelect_SelectionChanged_Click" Text="Wybierz danie" FontFamily="Segoe Print" FontSize="18" BorderBrush="{x:Null}" Background="#FFF0F0F0"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="3" Margin="10" >
-            <TextBlock Grid.Row="2" Grid.Column="3" Margin="10" Text="Lista zadań:" FontWeight="Bold"/>
-            <ListBox x:Name="MealTaskList" IsSelected="true" Grid.Row="2" Grid.Column="3" ItemsSource="{Binding Path=Table}" MinWidth="200" MinHeight="240" SelectionChanged="MealTaskList_SelectionChanged_Click">
+            <TextBlock Grid.Row="2" Grid.Column="3" Margin="10" Text="Lista zadań:" Foreground="White" FontFamily="Segoe Print" FontSize="22"/>
+            <ListBox x:Name="MealTaskList" IsSelected="true" Grid.Row="2" Grid.Column="3" ItemsSource="{Binding Path=Table}" MinWidth="320" MinHeight="270" SelectionChanged="MealTaskList_SelectionChanged_Click" Background="Black" BorderBrush="{x:Null}" OpacityMask="#B2FFFFFF" Foreground="White" FontFamily="Segoe Print">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding TaskName}" />
@@ -43,9 +47,9 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.RowSpan="3" Grid.Column="4" Margin="10">
-            <TextBlock Grid.Row="2" Grid.Column="4" Margin="10" Text="Szczegółowy opis:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="2" Grid.Column="4" Margin="10" Text="Szczegółowy opis:" FontFamily="Segoe Print" FontSize="22" Foreground="White"/>
 
-            <ListView x:Name="MealDetailTaskList" ItemsSource="{Binding Path=Table}" Grid.Row="3" Grid.Column="4" Height="240" FontSize="14" FontStyle="Italic" Background="#FFD7E5F1" Foreground="Black" Padding="5">
+            <ListView x:Name="MealDetailTaskList" ItemsSource="{Binding Path=Table}" Grid.Row="3" Grid.Column="4" MinWidth="420" MinHeight="270" FontSize="18" Background="Black" Foreground="White" Padding="5" BorderBrush="{x:Null}" OpacityMask="#B2FFFFFF" FontFamily="Segoe Print">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding TaskDescription}"/>
@@ -53,6 +57,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-        
+
     </Grid>
 </Window>

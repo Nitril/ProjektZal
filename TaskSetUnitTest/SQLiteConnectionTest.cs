@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AppLib;
 using AppUI;
-
+using System.Threading;
 
 namespace TasksModelUnitTest
 
@@ -44,8 +44,7 @@ namespace TasksModelUnitTest
         public void TestConnectionToDatabase6()
         {
 
-
-            DataTable dt = SqliteDataAccess.DisplaySelectedRow("Smoothie");
+            string z = "Smoothie";            DataTable dt = SqliteDataAccess.DisplaySelectedRow(z);
 
 
             string field = dt.Rows[0][0].ToString();
@@ -67,5 +66,33 @@ namespace TasksModelUnitTest
             Assert.AreEqual(field, "SmothieTestDescription2", "returned values incompatibility");
 
         }
+
+        [TestMethod]
+        public void Test_window()
+        {
+            var showMonitor = new ManualResetEventSlim(false);
+            var closeMonitor = new ManualResetEventSlim(false);
+
+            Thread th = new Thread(new ThreadStart(delegate
+            {
+                var mw = new MainWindow();
+                mw.Show();
+
+                showMonitor.Set();
+                closeMonitor.Wait();
+            }));
+
+            th.ApartmentState = ApartmentState.STA;
+            th.Start();
+
+            showMonitor.Wait(1);
+            Task.Delay(1000).Wait();
+            
+            closeMonitor.Set();
+        }
+
+
     }
+
+
 }
