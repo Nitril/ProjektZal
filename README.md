@@ -1,6 +1,12 @@
 # ProjektZal
-Książka Kucharkska
-Autorzy: Karol Szarek, Jakub Syrek, Maciek Mleczko
+
+## Książka Kucharkska
+
+### Autorzy: Karol Szarek, Jakub Syrek, Maciek Mleczko
+
+## Aplikacja
+
+* Projekt przedstawia innowacyjną apli
 
 Aplikacja książki kucharskiej zbudowana jako aplikacja WPF z odwołaniem do bazy danych SQLite.
 Aplikacja składa się z trzech projektów w solution:

@@ -102,8 +102,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include=".gitignore" />
-    <None Include="api\.gitignore" />
     <None Include="api\index.md" />
     <None Include="articles\intro.md" />
     <None Include="articles\toc.md" />
@@ -118,6 +116,8 @@
     </None>
     <None Include="toc.yml" />
     <Resource Include="img\cook_book_bckgrd.png" />
+    <Content Include=".gitignore" />
+    <Content Include="api\.gitignore" />
     <Content Include="Tasks.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

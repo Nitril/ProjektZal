@@ -63,8 +63,6 @@
     <Compile Include="SQLiteConnectionTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".gitignore" />
-    <None Include="api\.gitignore" />
     <None Include="api\index.md" />
     <None Include="App.config" />
     <None Include="articles\intro.md" />
@@ -83,6 +81,10 @@
       <Project>{b5bc1f74-4706-4ed5-8804-cbe38a353639}</Project>
       <Name>AppUI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="api\.gitignore" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
