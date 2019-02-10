@@ -11,11 +11,11 @@ using AppLib;
 
 namespace AppLib
 {
-    
-    /*
-    The main database connection class
-    Contains all methods for performing connection and retrieving data from database
-    */
+
+    /// <summary>
+    ///The main database connection class
+    ///Contains all methods for performing connection and retrieving data from database
+    /// </summary>
     public class SqliteDataAccess
     {
 
