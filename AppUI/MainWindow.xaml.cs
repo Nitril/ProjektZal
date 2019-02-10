@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Speech.Synthesis;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,11 +25,16 @@ namespace AppUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary> 
+        /// Initialize an instance of all accesible synth
+        /// </summary>        
+        public static SpeechSynthesizer synth = new SpeechSynthesizer();
+
 
         /// <summary> 
         /// Initialize main window and load MainWindow_Loaded event
         /// </summary>
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -64,8 +70,9 @@ namespace AppUI
         }
         /// <summary> 
         /// Event handler which is updating displayed description of selected task whenver listview value selected is changed. It loads proper meals task list to list view.
+        /// Event handling also synthesizer function by autoreading whatever is being transfered to the final window.
         /// </summary>
-        private void MealTaskList_SelectionChanged_Click(object sender, SelectionChangedEventArgs e)
+        private async void MealTaskList_SelectionChanged_Click(object sender, SelectionChangedEventArgs e)
         {
             DataTable datatable = new DataTable();
 
@@ -76,6 +83,29 @@ namespace AppUI
                 //query database to load task descriptions
                 datatable = SqliteDataAccess.DisplayTaskDescriptions(item);
             }
+            //Prepare the string to be read
+            string read = SqliteDataAccess.convertDataTableToString(datatable);
+
+            //Make sure that previous synth tasks are cancelled
+            synth.SpeakAsyncCancelAll();
+
+            //As polish speech libraries are implemented externaly, and depend on proper installation so the synth function is adjusted to this situation.
+            try
+            {
+                //Select polish voice
+                synth.SelectVoice("Microsoft Paulina Desktop");
+            }
+            catch (Exception exc)
+            {
+                //Mask Exception in case "Paulina" voice is missing, to allow text to be spoken with default english.
+            }
+
+            ///Technical method for querrying for installed and available system voicess
+            //var a = synth.GetInstalledVoices();
+
+            Prompt prompt = new Prompt(read);
+
+            await Task.Run(() => synth.SpeakAsync(prompt));
             //display to list view
             MealDetailTaskList.DataContext = datatable.DefaultView;
         }

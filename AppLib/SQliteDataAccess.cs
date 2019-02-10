@@ -90,7 +90,22 @@ namespace AppLib
                 return dt;
             }
         }
-
+        /// <summary> Convert datatable to string for reading </summary>
+        /// /// <returns>
+        /// Converted string 
+        /// </returns>
+        public static string convertDataTableToString(DataTable dataTable)
+        {
+            string data = string.Empty;
+            int rowsCount = dataTable.Rows.Count;
+            for (int i = 0; i < rowsCount; i++)
+            {
+                DataRow row = dataTable.Rows[i];
+                data += row[0].ToString();
+                data += " ";
+            }
+            return data;
+        }
         /// <summary> Load connection string from configuration manager App.Config file with id="Default" </summary>
         /// <returns>
         /// connection string used to connecting with SQLite database 

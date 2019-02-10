@@ -101,7 +101,19 @@ namespace TasksModelUnitTest
             
             closeMonitor.Set();
         }
-
+        /// <summary> 
+        /// Testing if DT conversion to string is working properly.
+        /// </summary>
+        [TestMethod]
+        [DeploymentItem("Tasks.db")]
+        public void TestConvertingDTtoString()
+        {
+            string z = "Kotlet schabowy";
+            DataTable dt = SqliteDataAccess.DisplaySelectedRow(z);            
+            string chk = SqliteDataAccess.convertDataTableToString(dt);
+            string chk1 = "Mięso na schabowe Przygotowanie panierki Smażenie mięsa Gotowanie ziemniaków Podanie schabowych ";
+            Assert.AreEqual(chk, chk1);
+        }
 
     }
 
