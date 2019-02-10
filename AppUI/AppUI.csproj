@@ -98,6 +98,27 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="_site\api\AppUI.App.html" />
+    <Content Include="_site\api\AppUI.html" />
+    <Content Include="_site\api\AppUI.MainWindow.html" />
+    <Content Include="_site\api\index.html" />
+    <Content Include="_site\api\toc.html" />
+    <Content Include="_site\articles\intro.html" />
+    <Content Include="_site\articles\toc.html" />
+    <Resource Include="_site\favicon.ico" />
+    <Content Include="_site\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="_site\index.html" />
+    <Content Include="_site\logo.svg" />
+    <Content Include="_site\styles\docfx.css" />
+    <Content Include="_site\styles\docfx.js" />
+    <Content Include="_site\styles\docfx.vendor.css" />
+    <Content Include="_site\styles\docfx.vendor.js" />
+    <Content Include="_site\styles\lunr.js" />
+    <Content Include="_site\styles\lunr.min.js" />
+    <Content Include="_site\styles\main.css" />
+    <Content Include="_site\styles\main.js" />
+    <Content Include="_site\styles\search-worker.js" />
+    <Content Include="_site\toc.html" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -115,6 +136,13 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="toc.yml" />
+    <None Include="_site\fonts\glyphicons-halflings-regular.eot" />
+    <Resource Include="_site\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="_site\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="_site\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="_site\manifest.json" />
+    <None Include="_site\search-stopwords.json" />
+    <None Include="_site\xrefmap.yml" />
     <Resource Include="img\cook_book_bckgrd.png" />
     <Content Include=".gitignore" />
     <Content Include="api\.gitignore" />
